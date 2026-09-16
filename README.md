@@ -67,8 +67,6 @@ elmo-hikes/
 
 ## Contributors
 - **Krish Gill** - A BCIT CST student that enjoys gaming and listening to music. FUN FACT! I really love cars
-- **MarcoAl-Nuaimi** - BCIT CST student. He loves gaming. Fun fact he loves driving.
-- **Mohid Khan** - BCIT CST student. He loves bayblades.
 
 ---
 
