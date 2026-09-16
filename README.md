@@ -67,6 +67,8 @@ elmo-hikes/
 
 ## Contributors
 - **Mohid** - BCIT CST Student with a passion for outdoor adventures like camping, hunting and fishing.
+- **Krish Gill** - A BCIT CST student that enjoys gaming and listening to music. FUN FACT! I really love cars
+- **MarcoAl-Nuaimi** - BCIT CST Student that loves gaming
 ---
 
 
