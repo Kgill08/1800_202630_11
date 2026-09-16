@@ -67,8 +67,6 @@ elmo-hikes/
 
 ## Contributors
 - **MarcoAl-Nuaimi** - BCIT CST Student that loves gaming
-- **KrishGill** - BCIT CST Student, working on his own project car
-- **MohidKhan** - BCIT CST Student, he loves beyblades 
 ---
 
 
