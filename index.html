@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +19,7 @@
             background-color: #f7f9fc;
         }
 
-        /* Navbar */
+        /* Developer 1 - Mohid: Navbar Styling */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -51,7 +52,7 @@
             color: #3156a3;
         }
 
-        /* Hero Section */
+        /* Developer 2 - Marco: Hero Section Styling */
         .hero {
             text-align: center;
             padding: 100px 8%;
@@ -72,6 +73,24 @@
             margin: 0 auto;
         }
 
+        /* Developer 3 - Krish: Call to Action Styling */
+        .cta-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 32px;
+            background-color: #3156a3;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .cta-button:hover {
+            background-color: #24427f;
+        }
+
+        /* Responsive Styling */
         @media (max-width: 600px) {
             .navbar {
                 padding: 18px 5%;
@@ -83,13 +102,17 @@
                 gap: 14px;
                 flex-wrap: wrap;
             }
+
+            .hero h1 {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar: Mohid's contribution -->
+    <!-- Developer 1 - Mohid: Navbar -->
     <header class="navbar">
         <a href="#home" class="logo">DecisionLog</a>
 
@@ -101,7 +124,7 @@
         </nav>
     </header>
 
-    <!-- Welcome / Hero section will be added by a teammate -->
+    <!-- Developer 2 - Marco: Welcome / Hero Section -->
     <main id="home">
         <section class="hero">
             <h1>Make Better Decisions with DecisionLog</h1>
@@ -109,6 +132,10 @@
                 Keep track of your decisions, reflect on your choices,
                 and learn from your past experiences.
             </p>
+
+            <!-- Developer 3 - Krish: Call to Action Button -->
+            <a href="login.html" class="cta-button">Get Started</a>
+        </section>
     </main>
 
 </body>
