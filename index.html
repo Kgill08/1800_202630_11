@@ -2,31 +2,88 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App">
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DecisionLog</title>
 
-    <!-- Other libraries go here -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #24324a;
+            background-color: #f7f9fc;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: white;
+            border-bottom: 1px solid #e5e9f0;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #3156a3;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #344054;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #3156a3;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 18px 5%;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            .nav-links {
+                gap: 14px;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
+    <!-- Navbar: Mohid's contribution -->
+    <header class="navbar">
+        <a href="#home" class="logo">DecisionLog</a>
 
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#decisions">Past Decisions</a>
+            <a href="#insights">Insights</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-
-    <!-- Link to scripts of your own -->
-    <!-- <script type="module" src="./src/main.js"></script> -->
+    <!-- Welcome / Hero section will be added by a teammate -->
+    <main id="home">
+        <!-- Landing page content goes here -->
+    </main>
 
 </body>
 
