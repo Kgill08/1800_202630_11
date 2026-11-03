@@ -1,0 +1,138 @@
+/* Authentication Pages */
+
+.auth-container {
+    max-width: 460px;
+    margin: 70px auto;
+    padding: 35px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.auth-container h1 {
+    margin-top: 0;
+    color: #24324a;
+    text-align: center;
+}
+
+.auth-container > p {
+    color: #667085;
+    text-align: center;
+}
+
+/* Authentication Form */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.auth-form label {
+    font-weight: bold;
+    color: #24324a;
+}
+
+.auth-form input {
+    padding: 12px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+.auth-form input:focus {
+    outline: 2px solid #3156a3;
+    outline-offset: 1px;
+}
+
+/* Authentication Button */
+
+.auth-button {
+    padding: 14px;
+    margin-top: 15px;
+    background-color: #3156a3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.auth-button:hover {
+    background-color: #24427f;
+}
+
+.auth-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Error Message */
+
+.auth-message {
+    color: #b42318;
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+}
+
+.auth-message:empty {
+    display: none;
+}
+
+/* Login and Signup Links */
+
+.auth-footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.auth-footer a {
+    color: #3156a3;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Home Page Login Status */
+
+.account-status {
+    color: #3156a3;
+    font-size: 14px;
+    margin-top: 15px !important;
+}
+
+/* Logout Button */
+
+.logout-button {
+    background: none;
+    border: none;
+    color: #344054;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+.logout-button:hover {
+    color: #3156a3;
+}
+
+/* Hidden Elements */
+
+[hidden] {
+    display: none !important;
+}
+
+/* Mobile Styling */
+
+@media (max-width: 600px) {
+    .auth-container {
+        margin: 30px 15px;
+        padding: 25px;
+    }
+}

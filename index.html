@@ -2,31 +2,66 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App">
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DecisionLog</title>
 
-    <!-- Other libraries go here -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/auth.css">
 
+    <!-- JavaScript -->
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/auth.js"></script>
 </head>
 
 <body>
 
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
+    <!-- Developer 1 - Mohid: Navigation Bar -->
+    <header class="navbar">
+        <a href="/index.html" class="logo">DecisionLog</a>
 
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="/index.html">Home</a>
+            <a href="/login.html" id="createDecisionLink">
+                Create Decision
+            </a>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+            <!-- Login and Signup Links -->
+            <a href="/login.html" id="loginLink">Log In</a>
+            <a href="/signup.html" id="signupLink">Sign Up</a>
 
-    <!-- Link to scripts of your own -->
-    <!-- <script type="module" src="./src/main.js"></script> -->
+            <!-- Logout Button -->
+            <button type="button" id="logoutButton"
+                    class="logout-button" hidden>
+                Log Out
+            </button>
+        </nav>
+    </header>
+
+    <!-- Developer 2 - Marco: Hero Section -->
+    <main id="home">
+        <section class="hero">
+
+            <h1>Make Better Decisions with DecisionLog</h1>
+
+            <p>
+                Keep track of your decisions, reflect on your choices,
+                and learn from your past experiences.
+            </p>
+
+            <!-- Login Status -->
+            <p id="accountStatus" class="account-status" hidden></p>
+
+            <!-- Developer 3 - Krish: Get Started Button -->
+            <a href="/login.html"
+               id="getStartedLink"
+               class="cta-button">
+                Get Started
+            </a>
+
+        </section>
+    </main>
 
 </body>
 

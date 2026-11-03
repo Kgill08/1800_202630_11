@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Past Decisions - DecisionLog</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/auth.css">
+    <link rel="stylesheet" href="/styles/past-decisions.css">
+
+    <!-- Firebase Authentication -->
+    <script type="module" src="/src/auth.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <a href="/index.html" class="logo">DecisionLog</a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="/index.html">Home</a>
+            <a href="/past-decisions.html">Past Decisions</a>
+            <a href="/login.html" id="createDecisionLink">
+                Create Decision
+            </a>
+
+            <!-- Account Links -->
+            <a href="/login.html" id="loginLink">Log In</a>
+            <a href="/signup.html" id="signupLink">Sign Up</a>
+
+            <button type="button" id="logoutButton"
+                    class="logout-button" hidden>
+                Log Out
+            </button>
+        </nav>
+    </header>
+
+    <!-- Past Decisions Page -->
+    <main class="past-container">
+
+        <!-- Page Header -->
+        <section class="past-header">
+            <div>
+                <h1>Past Decisions</h1>
+                <p>Review your previous choices and reflect on them.</p>
+            </div>
+
+            <a href="/login.html"
+               id="getStartedLink"
+               class="new-decision-button">
+                + New Decision
+            </a>
+        </section>
+
+        <!-- Saved Decisions Container -->
+        <section id="decisionsList"
+                 aria-label="Saved decisions">
+        </section>
+
+        <!-- Empty State -->
+        <section id="emptyState" class="empty-state">
+
+            <h2>No Decisions Yet</h2>
+
+            <p>
+                You haven't saved any decisions yet.
+                Start by creating your first decision!
+            </p>
+
+            <a href="/login.html"
+               class="new-decision-button"
+               id="createDecisionButton">
+                Create Your First Decision
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

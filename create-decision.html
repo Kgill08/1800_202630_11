@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Decision - DecisionLog</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <!-- JavaScript -->
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/auth-guard.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <a href="/index.html" class="logo">DecisionLog</a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="/index.html">Home</a>
+            <a href="/past-decisions.html">Past Decisions</a>
+        </nav>
+    </header>
+
+    <!-- Protected Decision Page -->
+    <main id="protectedContent" class="decision-container" hidden>
+
+        <h1>Create a Decision</h1>
+        <p>Describe the decision you need to make.</p>
+
+        <!-- Decision Form -->
+        <form id="decisionForm">
+
+            <!-- Decision Title -->
+            <label for="decisionTitle">Decision Title</label>
+            <input
+                type="text"
+                id="decisionTitle"
+                placeholder="What decision are you making?"
+                required
+            >
+
+            <!-- Decision Description -->
+            <label for="decisionDescription">Description</label>
+            <textarea
+                id="decisionDescription"
+                placeholder="Describe your situation..."
+                rows="5"
+                required
+            ></textarea>
+
+            <!-- Continue Button -->
+            <button
+                type="button"
+                id="continueButton"
+                class="form-button"
+            >
+                Continue to Options
+            </button>
+
+            <!-- Decision Options Section -->
+            <section id="optionsSection"
+                     class="options-section" hidden>
+
+                <h2>Add Your Options</h2>
+                <p>Enter at least two options to compare.</p>
+
+                <!-- Options List -->
+                <div id="optionsList">
+
+                    <!-- Option 1 -->
+                    <div class="option-row">
+                        <label for="option1">Option 1</label>
+                        <input
+                            type="text"
+                            id="option1"
+                            class="option-input"
+                            placeholder="Enter your first option"
+                        >
+                    </div>
+
+                    <!-- Option 2 -->
+                    <div class="option-row">
+                        <label for="option2">Option 2</label>
+                        <input
+                            type="text"
+                            id="option2"
+                            class="option-input"
+                            placeholder="Enter your second option"
+                        >
+                    </div>
+
+                </div>
+
+                <!-- Add Another Option Button -->
+                <button
+                    type="button"
+                    id="addOptionButton"
+                    class="add-option-button"
+                >
+                    + Add Another Option
+                </button>
+
+                <!-- Preview Decision Button -->
+                <button
+                    type="button"
+                    id="previewDecisionButton"
+                    class="form-button"
+                >
+                    Preview Decision
+                </button>
+
+            </section>
+
+            <!-- Decision Preview -->
+            <div
+                id="decisionPreview"
+                class="decision-preview"
+                aria-live="polite"
+                hidden
+            ></div>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
