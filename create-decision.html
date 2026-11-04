@@ -37,34 +37,19 @@
 
             <!-- Decision Title -->
             <label for="decisionTitle">Decision Title</label>
-            <input
-                type="text"
-                id="decisionTitle"
-                placeholder="What decision are you making?"
-                required
-            >
+            <input type="text" id="decisionTitle" placeholder="What decision are you making?" required>
 
             <!-- Decision Description -->
             <label for="decisionDescription">Description</label>
-            <textarea
-                id="decisionDescription"
-                placeholder="Describe your situation..."
-                rows="5"
-                required
-            ></textarea>
+            <textarea id="decisionDescription" placeholder="Describe your situation..." rows="5" required></textarea>
 
             <!-- Continue Button -->
-            <button
-                type="button"
-                id="continueButton"
-                class="form-button"
-            >
+            <button type="button" id="continueButton" class="form-button">
                 Continue to Options
             </button>
 
             <!-- Decision Options Section -->
-            <section id="optionsSection"
-                     class="options-section" hidden>
+            <section id="optionsSection" class="options-section" hidden>
 
                 <h2>Add Your Options</h2>
                 <p>Enter at least two options to compare.</p>
@@ -75,54 +60,38 @@
                     <!-- Option 1 -->
                     <div class="option-row">
                         <label for="option1">Option 1</label>
-                        <input
-                            type="text"
-                            id="option1"
-                            class="option-input"
-                            placeholder="Enter your first option"
-                        >
+                        <input type="text" id="option1" class="option-input" placeholder="Enter your first option">
                     </div>
 
                     <!-- Option 2 -->
                     <div class="option-row">
                         <label for="option2">Option 2</label>
-                        <input
-                            type="text"
-                            id="option2"
-                            class="option-input"
-                            placeholder="Enter your second option"
-                        >
+                        <input type="text" id="option2" class="option-input" placeholder="Enter your second option">
                     </div>
 
                 </div>
 
                 <!-- Add Another Option Button -->
-                <button
-                    type="button"
-                    id="addOptionButton"
-                    class="add-option-button"
-                >
+                <button type="button" id="addOptionButton" class="add-option-button">
                     + Add Another Option
                 </button>
 
                 <!-- Preview Decision Button -->
-                <button
-                    type="button"
-                    id="previewDecisionButton"
-                    class="form-button"
-                >
+                <button type="button" id="previewDecisionButton" class="form-button">
                     Preview Decision
                 </button>
 
             </section>
 
             <!-- Decision Preview -->
-            <div
-                id="decisionPreview"
-                class="decision-preview"
-                aria-live="polite"
-                hidden
-            ></div>
+            <div id="decisionPreview" class="decision-preview" aria-live="polite" hidden></div>
+
+            <!-- Save Decision Button -->
+            <button type="button" id="saveDecisionButton" class="form-button" hidden>
+                Save Decision
+            </button>
+
+            <p id="saveMessage" aria-live="polite"></p>
 
         </form>
 
