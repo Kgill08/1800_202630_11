@@ -1,4 +1,4 @@
-import { auth } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 
 import {
     createUserWithEmailAndPassword,
@@ -7,12 +7,33 @@ import {
     onAuthStateChanged
 } from "firebase/auth";
 
+import {
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+} from "firebase/firestore";
+
 // Display Authentication Messages
 function showMessage(message) {
     const messageBox = document.getElementById("authMessage");
 
     if (messageBox) {
         messageBox.textContent = message;
+    }
+}
+
+// Create a user profile in Firestore
+async function createUserProfile(user) {
+    const userRef = doc(db, "users", user.uid);
+    const userSnapshot = await getDoc(userRef);
+
+    if (!userSnapshot.exists()) {
+        await setDoc(userRef, {
+            uid: user.uid,
+            email: user.email,
+            createdAt: serverTimestamp()
+        });
     }
 }
 
@@ -43,16 +64,16 @@ function getErrorMessage(error) {
             return "Too many attempts. Please try again later.";
 
         default:
-            console.error("Authentication error:", error.code);
+            console.error("Authentication error:", error);
             return "Authentication failed. Please try again.";
     }
 }
 
-// Sign Up
+// SIGN UP
 const signupForm = document.getElementById("signupForm");
 
 if (signupForm) {
-    signupForm.addEventListener("submit", async function(event) {
+    signupForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const email = document.getElementById("signupEmail").value.trim();
@@ -68,7 +89,22 @@ if (signupForm) {
         button.disabled = true;
 
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            try {
+                await createUserProfile(userCredential.user);
+                console.log("User profile saved to Firestore.");
+            } catch (profileError) {
+                console.error("Profile creation error:", profileError);
+                showMessage(
+                    "Account created, but profile could not be saved. Check Firestore Rules."
+                );
+                return;
+            }
 
             console.log("Account created successfully.");
             window.location.href = "/index.html";
@@ -82,11 +118,11 @@ if (signupForm) {
     });
 }
 
-// Log In
+// LOG IN
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
-    loginForm.addEventListener("submit", async function(event) {
+    loginForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const email = document.getElementById("loginEmail").value.trim();
@@ -96,7 +132,22 @@ if (loginForm) {
         button.disabled = true;
 
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            try {
+                await createUserProfile(userCredential.user);
+                console.log("User profile checked in Firestore.");
+            } catch (profileError) {
+                console.error("Profile creation error:", profileError);
+                showMessage(
+                    "Logged in, but user profile could not be saved. Check Firestore Rules."
+                );
+                return;
+            }
 
             console.log("Logged in successfully.");
             window.location.href = "/index.html";
@@ -110,11 +161,11 @@ if (loginForm) {
     });
 }
 
-// Log Out
+// LOG OUT
 const logoutButton = document.getElementById("logoutButton");
 
 if (logoutButton) {
-    logoutButton.addEventListener("click", async function() {
+    logoutButton.addEventListener("click", async function () {
         try {
             await signOut(auth);
 
@@ -128,14 +179,13 @@ if (logoutButton) {
     });
 }
 
-// Update Navigation Based on Login Status
-onAuthStateChanged(auth, function(user) {
+// UPDATE NAVIGATION BASED ON LOGIN STATUS
+onAuthStateChanged(auth, function (user) {
 
     const loginLink = document.getElementById("loginLink");
     const signupLink = document.getElementById("signupLink");
     const accountStatus = document.getElementById("accountStatus");
 
-    // Show or Hide Login and Signup
     if (loginLink) {
         loginLink.hidden = Boolean(user);
     }
@@ -144,33 +194,28 @@ onAuthStateChanged(auth, function(user) {
         signupLink.hidden = Boolean(user);
     }
 
-    // Show or Hide Logout
     if (logoutButton) {
         logoutButton.hidden = !user;
     }
 
-    // Display User Email
     if (accountStatus) {
         accountStatus.hidden = !user;
-
         accountStatus.textContent = user
             ? `Signed in as ${user.email}`
             : "";
     }
 
-    // Set Destination Based on Login Status
     const destination = user
         ? "/create-decision.html"
         : "/login.html";
 
-    // Update All Decision Buttons
     const decisionButtons = [
         "getStartedLink",
         "createDecisionLink",
         "createDecisionButton"
     ];
 
-    decisionButtons.forEach(function(buttonId) {
+    decisionButtons.forEach(function (buttonId) {
         const button = document.getElementById(buttonId);
 
         if (button) {

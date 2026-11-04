@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +12,7 @@
     <link rel="stylesheet" href="/styles/past-decisions.css">
 
     <!-- Firebase Authentication -->
-    <script type="module" src="/src/auth.js"></script>
+    <script type="module" src="/src/main.js"></script>
 </head>
 
 <body>
@@ -33,8 +32,7 @@
             <a href="/login.html" id="loginLink">Log In</a>
             <a href="/signup.html" id="signupLink">Sign Up</a>
 
-            <button type="button" id="logoutButton"
-                    class="logout-button" hidden>
+            <button type="button" id="logoutButton" class="logout-button" hidden>
                 Log Out
             </button>
         </nav>
@@ -50,16 +48,13 @@
                 <p>Review your previous choices and reflect on them.</p>
             </div>
 
-            <a href="/login.html"
-               id="getStartedLink"
-               class="new-decision-button">
+            <a href="/login.html" id="getStartedLink" class="new-decision-button">
                 + New Decision
             </a>
         </section>
 
         <!-- Saved Decisions Container -->
-        <section id="decisionsList"
-                 aria-label="Saved decisions">
+        <section id="decisionsList" aria-label="Saved decisions">
         </section>
 
         <!-- Empty State -->
@@ -72,9 +67,7 @@
                 Start by creating your first decision!
             </p>
 
-            <a href="/login.html"
-               class="new-decision-button"
-               id="createDecisionButton">
+            <a href="/login.html" class="new-decision-button" id="createDecisionButton">
                 Create Your First Decision
             </a>
 
