@@ -1,3 +1,4 @@
+
 import { auth, db } from "./firebase.js";
 
 import {
@@ -20,20 +21,6 @@ function showMessage(message) {
 
     if (messageBox) {
         messageBox.textContent = message;
-    }
-}
-
-// Create a user profile in Firestore
-async function createUserProfile(user) {
-    const userRef = doc(db, "users", user.uid);
-    const userSnapshot = await getDoc(userRef);
-
-    if (!userSnapshot.exists()) {
-        await setDoc(userRef, {
-            uid: user.uid,
-            email: user.email,
-            createdAt: serverTimestamp()
-        });
     }
 }
 
@@ -64,16 +51,38 @@ function getErrorMessage(error) {
             return "Too many attempts. Please try again later.";
 
         default:
-            console.error("Authentication error:", error);
-            return "Authentication failed. Please try again.";
+            console.error("Firebase error:", error);
+            return "Something went wrong. Please try again.";
     }
 }
 
-// SIGN UP
+// Create User Profile in Firestore
+async function createUserProfile(user) {
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    // Only create a profile if one doesn't exist
+    if (!userSnap.exists()) {
+
+        await setDoc(userRef, {
+            uid: user.uid,
+            email: user.email,
+            createdAt: serverTimestamp()
+        });
+
+        console.log("User profile created in Firestore.");
+
+    } else {
+        console.log("User profile already exists.");
+    }
+}
+
+// Sign Up
 const signupForm = document.getElementById("signupForm");
 
 if (signupForm) {
-    signupForm.addEventListener("submit", async function (event) {
+    signupForm.addEventListener("submit", async function(event) {
         event.preventDefault();
 
         const email = document.getElementById("signupEmail").value.trim();
@@ -95,13 +104,13 @@ if (signupForm) {
                 password
             );
 
+            // Save new user profile
             try {
                 await createUserProfile(userCredential.user);
-                console.log("User profile saved to Firestore.");
-            } catch (profileError) {
-                console.error("Profile creation error:", profileError);
+            } catch (error) {
+                console.error("Profile creation error:", error);
                 showMessage(
-                    "Account created, but profile could not be saved. Check Firestore Rules."
+                    "Account created, but the Firestore profile could not be saved. Check the database rules."
                 );
                 return;
             }
@@ -118,11 +127,11 @@ if (signupForm) {
     });
 }
 
-// LOG IN
+// Log In
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
-    loginForm.addEventListener("submit", async function (event) {
+    loginForm.addEventListener("submit", async function(event) {
         event.preventDefault();
 
         const email = document.getElementById("loginEmail").value.trim();
@@ -138,13 +147,13 @@ if (loginForm) {
                 password
             );
 
+            // Create a profile for existing users if needed
             try {
                 await createUserProfile(userCredential.user);
-                console.log("User profile checked in Firestore.");
-            } catch (profileError) {
-                console.error("Profile creation error:", profileError);
+            } catch (error) {
+                console.error("Profile creation error:", error);
                 showMessage(
-                    "Logged in, but user profile could not be saved. Check Firestore Rules."
+                    "Signed in, but the Firestore profile could not be saved. Check the database rules."
                 );
                 return;
             }
@@ -161,11 +170,11 @@ if (loginForm) {
     });
 }
 
-// LOG OUT
+// Log Out
 const logoutButton = document.getElementById("logoutButton");
 
 if (logoutButton) {
-    logoutButton.addEventListener("click", async function () {
+    logoutButton.addEventListener("click", async function() {
         try {
             await signOut(auth);
 
@@ -179,13 +188,14 @@ if (logoutButton) {
     });
 }
 
-// UPDATE NAVIGATION BASED ON LOGIN STATUS
-onAuthStateChanged(auth, function (user) {
+// Update Navigation Based on Login Status
+onAuthStateChanged(auth, function(user) {
 
     const loginLink = document.getElementById("loginLink");
     const signupLink = document.getElementById("signupLink");
     const accountStatus = document.getElementById("accountStatus");
 
+    // Show or Hide Login and Signup
     if (loginLink) {
         loginLink.hidden = Boolean(user);
     }
@@ -194,28 +204,33 @@ onAuthStateChanged(auth, function (user) {
         signupLink.hidden = Boolean(user);
     }
 
+    // Show or Hide Logout
     if (logoutButton) {
         logoutButton.hidden = !user;
     }
 
+    // Display User Email
     if (accountStatus) {
         accountStatus.hidden = !user;
+
         accountStatus.textContent = user
             ? `Signed in as ${user.email}`
             : "";
     }
 
+    // Set Decision Page Destination
     const destination = user
         ? "/create-decision.html"
         : "/login.html";
 
+    // Update Decision Buttons
     const decisionButtons = [
         "getStartedLink",
         "createDecisionLink",
         "createDecisionButton"
     ];
 
-    decisionButtons.forEach(function (buttonId) {
+    decisionButtons.forEach(function(buttonId) {
         const button = document.getElementById(buttonId);
 
         if (button) {

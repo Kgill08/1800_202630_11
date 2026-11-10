@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +12,9 @@
     <link rel="stylesheet" href="/styles/auth.css">
     <link rel="stylesheet" href="/styles/past-decisions.css">
 
-    <!-- Firebase Authentication -->
+    <!-- JavaScript -->
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/auth.js"></script>
 </head>
 
 <body>
@@ -24,6 +26,7 @@
         <nav class="nav-links" aria-label="Main navigation">
             <a href="/index.html">Home</a>
             <a href="/past-decisions.html">Past Decisions</a>
+
             <a href="/login.html" id="createDecisionLink">
                 Create Decision
             </a>
@@ -32,7 +35,13 @@
             <a href="/login.html" id="loginLink">Log In</a>
             <a href="/signup.html" id="signupLink">Sign Up</a>
 
-            <button type="button" id="logoutButton" class="logout-button" hidden>
+            <!-- Logout Button -->
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+                hidden
+            >
                 Log Out
             </button>
         </nav>
@@ -45,16 +54,26 @@
         <section class="past-header">
             <div>
                 <h1>Past Decisions</h1>
-                <p>Review your previous choices and reflect on them.</p>
+                <p>
+                    Review your previous choices and reflect on them.
+                </p>
             </div>
 
-            <a href="/login.html" id="getStartedLink" class="new-decision-button">
+            <!-- New Decision Button -->
+            <a
+                href="/login.html"
+                id="getStartedLink"
+                class="new-decision-button"
+            >
                 + New Decision
             </a>
         </section>
 
-        <!-- Saved Decisions Container -->
-        <section id="decisionsList" aria-label="Saved decisions">
+        <!-- Saved Decisions -->
+        <section
+            id="decisionsList"
+            aria-label="Saved decisions"
+        >
         </section>
 
         <!-- Empty State -->
@@ -67,7 +86,12 @@
                 Start by creating your first decision!
             </p>
 
-            <a href="/login.html" class="new-decision-button" id="createDecisionButton">
+            <!-- Create Decision Button -->
+            <a
+                href="/login.html"
+                class="new-decision-button"
+                id="createDecisionButton"
+            >
                 Create Your First Decision
             </a>
 
