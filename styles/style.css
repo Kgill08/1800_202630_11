@@ -98,120 +98,185 @@
             }
         }
 
-        
-/* Decision Creation Page */
 
-.decision-container {
-    max-width: 650px;
-    margin: 60px auto;
-    padding: 30px;
-    background-color: white;
-    border-radius: 10px;
-}
+        /* Decision Creation Page */
 
-.decision-container h1 {
-    color: #24324a;
-}
+        .decision-container {
+            max-width: 650px;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+        }
 
-.decision-container p {
-    color: #667085;
-    margin-bottom: 30px;
-}
+        .decision-container h1 {
+            color: #24324a;
+        }
 
-#decisionForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        .decision-container p {
+            color: #667085;
+            margin-bottom: 30px;
+        }
 
-#decisionForm label {
-    font-weight: bold;
-}
+        #decisionForm {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-#decisionForm input,
-#decisionForm textarea {
-    padding: 12px;
-    border: 1px solid #d0d5dd;
-    border-radius: 6px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-}
+        #decisionForm label {
+            font-weight: bold;
+        }
 
-.form-button {
-    padding: 14px;
-    background-color: #3156a3;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
+        #decisionForm input,
+        #decisionForm textarea {
+            padding: 12px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
 
-.form-button:hover {
-    background-color: #24427f;
-}
+        .form-button {
+            padding: 14px;
+            background-color: #3156a3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-@media (max-width: 700px) {
-    .decision-container {
-        margin: 20px 12px;
-        padding: 20px;
-    }
-}
+        .form-button:hover {
+            background-color: #24427f;
+        }
+
+        @media (max-width: 700px) {
+            .decision-container {
+                margin: 20px 12px;
+                padding: 20px;
+            }
+        }
 
 
-/* Decision Options Section */
+        /* Decision Options Section */
 
-.options-section {
-    margin-top: 25px;
-}
+        .options-section {
+            margin-top: 25px;
+        }
 
-.options-section h2 {
-    color: #24324a;
-    margin-bottom: 10px;
-}
+        .options-section h2 {
+            color: #24324a;
+            margin-bottom: 10px;
+        }
 
-.option-row {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 15px;
-}
+        .option-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
 
-.option-row input {
-    padding: 12px;
-    border: 1px solid #d0d5dd;
-    border-radius: 6px;
-    font-size: 16px;
-}
+        .option-row input {
+            padding: 12px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
 
-.add-option-button {
-    padding: 12px;
-    background-color: #eef3fb;
-    color: #3156a3;
-    border: 1px solid #3156a3;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-bottom: 15px;
-}
+        .add-option-button {
+            padding: 12px;
+            background-color: #eef3fb;
+            color: #3156a3;
+            border: 1px solid #3156a3;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
 
-.remove-option {
-    background: none;
-    color: #b42318;
-    border: none;
-    cursor: pointer;
-    align-self: flex-end;
-}
+        .remove-option {
+            background: none;
+            color: #b42318;
+            border: none;
+            cursor: pointer;
+            align-self: flex-end;
+        }
 
-.decision-preview {
-    background-color: #eef3fb;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    white-space: pre-line;
-}
+        .decision-preview {
+            background-color: #eef3fb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            white-space: pre-line;
+        }
 
-/* Keep hidden sections hidden */
-[hidden] {
-    display: none !important;
-}
+        /* Keep hidden sections hidden */
+        [hidden] {
+            display: none !important;
+        }
 
+        /* SPRINT 3 - OPTION COMPARISON */
+
+        .sprint-option-card {
+            padding: 18px;
+            margin-bottom: 20px;
+            border: 1px solid #d7deea;
+            border-radius: 10px;
+            background: #fbfcff;
+        }
+
+        .sprint-option-card h3 {
+            color: #24324a;
+        }
+
+        .sprint-option-card textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .final-option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: #3156a3;
+        }
+
+        #decisionForm input[type="radio"] {
+            width: auto;
+            padding: 0;
+        }
+
+        .status-message.success {
+            color: #18794e;
+        }
+
+        .status-message.error {
+            color: #b42318;
+        }
+
+        /* Saved decision comparisons */
+
+        .saved-option {
+            margin: 16px 0;
+            padding: 16px;
+            border: 1px solid #e5e9f0;
+            border-radius: 8px;
+            background: #fbfcff;
+        }
+
+        .saved-option h4 {
+            color: #24324a;
+        }
+
+        .final-choice-result {
+            margin-top: 20px;
+            padding: 14px;
+            border-left: 4px solid #3156a3;
+            background: #eef3fb;
+        }
