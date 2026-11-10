@@ -1,4 +1,5 @@
-import { auth } from "./firebase.js";
+
+import { auth, db } from "./firebase.js";
 
 import {
     createUserWithEmailAndPassword,
@@ -6,6 +7,13 @@ import {
     signOut,
     onAuthStateChanged
 } from "firebase/auth";
+
+import {
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+} from "firebase/firestore";
 
 // Display Authentication Messages
 function showMessage(message) {
@@ -43,8 +51,30 @@ function getErrorMessage(error) {
             return "Too many attempts. Please try again later.";
 
         default:
-            console.error("Authentication error:", error.code);
-            return "Authentication failed. Please try again.";
+            console.error("Firebase error:", error);
+            return "Something went wrong. Please try again.";
+    }
+}
+
+// Create User Profile in Firestore
+async function createUserProfile(user) {
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    // Only create a profile if one doesn't exist
+    if (!userSnap.exists()) {
+
+        await setDoc(userRef, {
+            uid: user.uid,
+            email: user.email,
+            createdAt: serverTimestamp()
+        });
+
+        console.log("User profile created in Firestore.");
+
+    } else {
+        console.log("User profile already exists.");
     }
 }
 
@@ -68,7 +98,22 @@ if (signupForm) {
         button.disabled = true;
 
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            // Save new user profile
+            try {
+                await createUserProfile(userCredential.user);
+            } catch (error) {
+                console.error("Profile creation error:", error);
+                showMessage(
+                    "Account created, but the Firestore profile could not be saved. Check the database rules."
+                );
+                return;
+            }
 
             console.log("Account created successfully.");
             window.location.href = "/index.html";
@@ -96,7 +141,22 @@ if (loginForm) {
         button.disabled = true;
 
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            // Create a profile for existing users if needed
+            try {
+                await createUserProfile(userCredential.user);
+            } catch (error) {
+                console.error("Profile creation error:", error);
+                showMessage(
+                    "Signed in, but the Firestore profile could not be saved. Check the database rules."
+                );
+                return;
+            }
 
             console.log("Logged in successfully.");
             window.location.href = "/index.html";
@@ -158,12 +218,12 @@ onAuthStateChanged(auth, function(user) {
             : "";
     }
 
-    // Set Destination Based on Login Status
+    // Set Decision Page Destination
     const destination = user
         ? "/create-decision.html"
         : "/login.html";
 
-    // Update All Decision Buttons
+    // Update Decision Buttons
     const decisionButtons = [
         "getStartedLink",
         "createDecisionLink",
