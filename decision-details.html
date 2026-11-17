@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Decision Details - DecisionLog</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/past-decisions.css">
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/auth.js"></script>
+    <script type="module" src="/src/auth-guard.js"></script>
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="/index.html" class="logo">DecisionLog</a>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="/index.html">Home</a>
+            <a href="/past-decisions.html">Past Decisions</a>
+            <button type="button" id="logoutButton" class="logout-button" hidden>Log Out</button>
+        </nav>
+    </header>
+
+    <main id="protectedContent" class="past-container" hidden>
+        <a class="back-link" href="/past-decisions.html">← Back to Past Decisions</a>
+        <p id="detailMessage" class="status-message" aria-live="polite"></p>
+        <article id="decisionDetailCard" class="detail-card" hidden></article>
+
+        <section id="reviewSection" class="review-panel" hidden>
+            <h2>Review This Decision</h2>
+            <p>Record what happened after you made this decision and what you learned.</p>
+            <form id="reviewForm">
+                <label for="actualOutcome">What actually happened?</label>
+                <textarea id="actualOutcome" rows="4" required placeholder="Describe the actual result..."></textarea>
+
+                <label for="outcomeRating">How did it go?</label>
+                <select id="outcomeRating" required>
+                    <option value="">Choose an outcome</option>
+                    <option value="worse">Worse than expected</option>
+                    <option value="as_expected">As expected</option>
+                    <option value="better">Better than expected</option>
+                </select>
+
+                <label for="lessonsLearned">What did you learn?</label>
+                <textarea id="lessonsLearned" rows="4" required
+                    placeholder="What would you remember or do differently next time?"></textarea>
+
+                <button type="submit" id="saveReviewButton" class="form-button">Save Reflection</button>
+                <p id="reviewMessage" class="status-message" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
