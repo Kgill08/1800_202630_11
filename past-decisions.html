@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,99 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Past Decisions - DecisionLog</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/auth.css">
     <link rel="stylesheet" href="/styles/past-decisions.css">
-
-    <!-- JavaScript -->
     <script type="module" src="/src/main.js"></script>
     <script type="module" src="/src/auth.js"></script>
+    <script type="module" src="/src/auth-guard.js"></script>
 </head>
 
 <body>
-
-    <!-- Navigation Bar -->
     <header class="navbar">
         <a href="/index.html" class="logo">DecisionLog</a>
-
         <nav class="nav-links" aria-label="Main navigation">
             <a href="/index.html">Home</a>
-            <a href="/past-decisions.html">Past Decisions</a>
-
-            <a href="/login.html" id="createDecisionLink">
-                Create Decision
-            </a>
-
-            <!-- Account Links -->
-            <a href="/login.html" id="loginLink">Log In</a>
-            <a href="/signup.html" id="signupLink">Sign Up</a>
-
-            <!-- Logout Button -->
-            <button
-                type="button"
-                id="logoutButton"
-                class="logout-button"
-                hidden
-            >
-                Log Out
-            </button>
+            <a href="/create-decision.html" id="createDecisionLink">Create Decision</a>
+            <button type="button" id="logoutButton" class="logout-button" hidden>Log Out</button>
         </nav>
     </header>
 
-    <!-- Past Decisions Page -->
-    <main class="past-container">
-
-        <!-- Page Header -->
+    <main id="protectedContent" class="past-container" hidden>
         <section class="past-header">
             <div>
                 <h1>Past Decisions</h1>
-                <p>
-                    Review your previous choices and reflect on them.
-                </p>
+                <p>Find previous choices, review their outcomes, and learn from them.</p>
             </div>
-
-            <!-- New Decision Button -->
-            <a
-                href="/login.html"
-                id="getStartedLink"
-                class="new-decision-button"
-            >
-                + New Decision
-            </a>
+            <a href="/create-decision.html" class="new-decision-button">+ New Decision</a>
         </section>
 
-        <!-- Saved Decisions -->
-        <section
-            id="decisionsList"
-            aria-label="Saved decisions"
-        >
+        <section class="patterns-panel" aria-labelledby="patternsHeading">
+            <h2 id="patternsHeading">Your Patterns</h2>
+            <p class="muted-text">A summary of your saved decisions and reflections.</p>
+            <div class="pattern-stats">
+                <div class="stat-card"><span id="totalDecisionCount">0</span><small>Total decisions</small></div>
+                <div class="stat-card"><span id="reviewedDecisionCount">0</span><small>Reviewed decisions</small></div>
+                <div class="stat-card"><span id="betterOutcomeCount">0</span><small>Better than expected</small></div>
+                <div class="stat-card"><span id="topDecisionCategory">—</span><small>Most common category</small></div>
+            </div>
+            <div id="categoryPatternList" class="category-pattern-list"></div>
         </section>
 
-        <!-- Empty State -->
-        <section id="emptyState" class="empty-state">
-
-            <h2>No Decisions Yet</h2>
-
-            <p>
-                You haven't saved any decisions yet.
-                Start by creating your first decision!
-            </p>
-
-            <!-- Create Decision Button -->
-            <a
-                href="/login.html"
-                class="new-decision-button"
-                id="createDecisionButton"
-            >
-                Create Your First Decision
-            </a>
-
+        <section class="decision-tools" aria-label="Search and filter decisions">
+            <label for="decisionSearch">Search decisions</label>
+            <input type="search" id="decisionSearch" placeholder="Search by title, description, or reasoning...">
+            <div class="category-filter-area">
+                <span class="filter-heading">Filter by category</span>
+                <div id="categoryFilterButtons" class="category-filter-buttons"
+                    aria-label="Filter decisions by category">
+                    <button type="button" class="filter-chip active" data-category="all"
+                        aria-pressed="true">All</button>
+                    <button type="button" class="filter-chip" data-category="School"
+                        aria-pressed="false">School</button>
+                    <button type="button" class="filter-chip" data-category="Finance"
+                        aria-pressed="false">Finance</button>
+                    <button type="button" class="filter-chip" data-category="Social"
+                        aria-pressed="false">Social</button>
+                    <button type="button" class="filter-chip" data-category="Health"
+                        aria-pressed="false">Health</button>
+                    <button type="button" class="filter-chip" data-category="Lifestyle"
+                        aria-pressed="false">Lifestyle</button>
+                    <button type="button" class="filter-chip" data-category="Career"
+                        aria-pressed="false">Career</button>
+                    <button type="button" class="filter-chip" data-category="Personal"
+                        aria-pressed="false">Personal</button>
+                    <button type="button" class="filter-chip" data-category="Other" aria-pressed="false">Other</button>
+                    <button type="button" class="filter-chip" data-category="Uncategorized"
+                        aria-pressed="false">Uncategorized</button>
+                </div>
+            </div>
         </section>
 
+        <p id="listMessage" class="status-message" aria-live="polite"></p>
+        <section id="decisionsList" aria-label="Saved decisions"></section>
+        <section id="emptyState" class="empty-state" hidden>
+            <h2>No Decisions Found</h2>
+            <p>No decisions match your search. Try a different search or create a new decision.</p>
+            <a href="/create-decision.html" class="new-decision-button">Create a Decision</a>
+        </section>
     </main>
-
 </body>
 
 </html>

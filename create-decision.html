@@ -4,99 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Decision - DecisionLog</title>
-
-    <!-- CSS -->
+    <title>Create a Decision - DecisionLog</title>
     <link rel="stylesheet" href="/styles/style.css">
-
-    <!-- JavaScript -->
     <script type="module" src="/src/main.js"></script>
     <script type="module" src="/src/auth-guard.js"></script>
+    <script type="module" src="/src/auth.js"></script>
 </head>
 
 <body>
-
-    <!-- Navigation Bar -->
     <header class="navbar">
         <a href="/index.html" class="logo">DecisionLog</a>
-
         <nav class="nav-links" aria-label="Main navigation">
             <a href="/index.html">Home</a>
             <a href="/past-decisions.html">Past Decisions</a>
+            <button type="button" id="logoutButton" class="logout-button" hidden>Log Out</button>
         </nav>
     </header>
 
-    <!-- Protected Decision Page -->
     <main id="protectedContent" class="decision-container" hidden>
-
         <h1>Create a Decision</h1>
-        <p>Describe the decision you need to make.</p>
+        <p>Record your reasoning and compare your options before choosing.</p>
 
-        <!-- Decision Form -->
         <form id="decisionForm">
-
-            <!-- Decision Title -->
             <label for="decisionTitle">Decision Title</label>
-            <input type="text" id="decisionTitle" placeholder="What decision are you making?" required>
+            <input type="text" id="decisionTitle" maxlength="120" placeholder="What decision are you making?" required>
 
-            <!-- Decision Description -->
-            <label for="decisionDescription">Description</label>
-            <textarea id="decisionDescription" placeholder="Describe your situation..." rows="5" required></textarea>
+            <label for="decisionDescription">Short Description</label>
+            <textarea id="decisionDescription" rows="3" maxlength="500" placeholder="Briefly describe the situation..."
+                required></textarea>
 
-            <!-- Continue Button -->
-            <button type="button" id="continueButton" class="form-button">
-                Continue to Options
-            </button>
+            <label for="decisionCategory">Category</label>
+            <select id="decisionCategory" required>
+                <option value="">Choose a category</option>
+                <option value="School">School / Education</option>
+                <option value="Finance">Finance</option>
+                <option value="Social">Social / Relationships</option>
+                <option value="Health">Health / Wellness</option>
+                <option value="Lifestyle">Lifestyle</option>
+                <option value="Career">Career</option>
+                <option value="Personal">Personal</option>
+                <option value="Other">Other</option>
+            </select>
 
-            <!-- Decision Options Section -->
+            <label for="decisionReason">Why I made this decision</label>
+            <textarea id="decisionReason" rows="3" placeholder="What situation or problem made this decision important?"
+                required></textarea>
+
+            <label for="initialThoughts">Initial Thoughts</label>
+            <textarea id="initialThoughts" rows="3"
+                placeholder="What are you thinking or feeling before making the decision?" required></textarea>
+
+            <label for="expectedOutcome">What I expect will happen</label>
+            <textarea id="expectedOutcome" rows="3" placeholder="What do you expect the result to be?"
+                required></textarea>
+
+            <button type="button" id="continueButton" class="form-button">Continue to Options</button>
+
             <section id="optionsSection" class="options-section" hidden>
-
-                <h2>Add Your Options</h2>
-                <p>Enter at least two options to compare.</p>
-
-                <!-- Options List -->
+                <h2>Compare Your Options</h2>
+                <p>Add at least two options, including their advantages and disadvantages.</p>
                 <div id="optionsList">
-
-                    <!-- Option 1 -->
                     <div class="option-row">
                         <label for="option1">Option 1</label>
                         <input type="text" id="option1" class="option-input" placeholder="Enter your first option">
                     </div>
-
-                    <!-- Option 2 -->
                     <div class="option-row">
                         <label for="option2">Option 2</label>
                         <input type="text" id="option2" class="option-input" placeholder="Enter your second option">
                     </div>
-
                 </div>
-
-                <!-- Add Another Option Button -->
-                <button type="button" id="addOptionButton" class="add-option-button">
-                    + Add Another Option
-                </button>
-
-                <!-- Preview Decision Button -->
-                <button type="button" id="previewDecisionButton" class="form-button">
-                    Preview Decision
-                </button>
-
+                <button type="button" id="addOptionButton" class="add-option-button">+ Add Another Option</button>
+                <button type="button" id="previewDecisionButton" class="form-button">Preview Decision</button>
             </section>
 
-            <!-- Decision Preview -->
             <div id="decisionPreview" class="decision-preview" aria-live="polite" hidden></div>
-
-            <!-- Save Decision Button -->
-            <button type="button" id="saveDecisionButton" class="form-button" hidden>
-                Save Decision
-            </button>
-
-            <p id="saveMessage" aria-live="polite"></p>
-
+            <button type="button" id="saveDecisionButton" class="form-button" hidden>Save Decision</button>
+            <p id="saveMessage" class="status-message" aria-live="polite"></p>
         </form>
-
     </main>
-
 </body>
 
 </html>

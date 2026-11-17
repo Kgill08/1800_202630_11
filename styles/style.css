@@ -280,3 +280,279 @@
             border-left: 4px solid #3156a3;
             background: #eef3fb;
         }
+
+        /* ==========================================
+   SPRINT 4 - DECISION CONTEXT AND REVIEW
+========================================== */
+
+        #decisionForm select,
+        #reviewForm select,
+        .decision-tools select,
+        .decision-tools input[type="search"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+            background: #fff;
+            color: #24324a;
+            font: inherit;
+        }
+
+        #decisionForm textarea,
+        #reviewForm textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+            font: inherit;
+            resize: vertical;
+        }
+
+        #decisionForm input:focus,
+        #decisionForm textarea:focus,
+        #decisionForm select:focus,
+        #reviewForm textarea:focus,
+        #reviewForm select:focus,
+        .decision-tools input:focus,
+        .decision-tools select:focus {
+            outline: 2px solid #3156a3;
+            outline-offset: 1px;
+        }
+
+        .status-message {
+            min-height: 1.2em;
+            line-height: 1.5;
+        }
+
+        .status-message.success {
+            color: #18794e;
+        }
+
+        .status-message.error {
+            color: #b42318;
+        }
+
+        .muted-text {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .decision-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .category-pill {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: #eef3fb;
+            color: #3156a3;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .patterns-panel,
+        .review-panel,
+        .detail-card {
+            margin: 24px 0;
+            padding: 24px;
+            border: 1px solid #e5e9f0;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .patterns-panel h2,
+        .review-panel h2,
+        .detail-card h1 {
+            margin-top: 0;
+            color: #24324a;
+        }
+
+        .pattern-stats {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin: 18px 0;
+        }
+
+        .stat-card {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 16px;
+            border-radius: 9px;
+            background: #eef3fb;
+        }
+
+        .stat-card span {
+            color: #3156a3;
+            font-size: 24px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .stat-card small {
+            color: #667085;
+        }
+
+        .pattern-row {
+            display: grid;
+            grid-template-columns: minmax(125px, 190px) 1fr;
+            align-items: center;
+            gap: 12px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .pattern-bar-track {
+            height: 10px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #e9edf4;
+        }
+
+        .pattern-bar {
+            height: 100%;
+            border-radius: 999px;
+            background: #3156a3;
+        }
+
+        .decision-tools {
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 8px 16px;
+            align-items: end;
+            margin: 24px 0;
+            padding: 18px;
+            border: 1px solid #e5e9f0;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .decision-tools label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .decision-tools input,
+        .decision-tools select {
+            grid-row: 2;
+        }
+
+        .decision-card {
+            padding: 22px;
+            border: 1px solid #e5e9f0;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .decision-card h2 {
+            margin-top: 0;
+        }
+
+        .detail-link {
+            margin-top: 10px;
+        }
+
+        .review-status {
+            color: #3156a3;
+            font-weight: bold;
+        }
+
+        .detail-card .saved-option {
+            margin: 16px 0;
+            padding: 16px;
+            border: 1px solid #e5e9f0;
+            border-radius: 8px;
+            background: #fbfcff;
+        }
+
+        .detail-card .saved-option h3 {
+            margin-top: 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: #3156a3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .review-panel form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .review-panel label {
+            font-weight: bold;
+        }
+
+        .review-panel button:disabled {
+            opacity: 0.65;
+            cursor: wait;
+        }
+
+        @media (max-width: 700px) {
+            .pattern-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .decision-tools {
+                grid-template-columns: 1fr;
+            }
+
+            .decision-tools input,
+            .decision-tools select {
+                grid-row: auto;
+            }
+        }
+
+        .category-filter-area {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-heading {
+            color: #344054;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .category-filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-chip {
+            padding: 8px 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 999px;
+            background: #f2f4f7;
+            color: #344054;
+            cursor: pointer;
+            font: inherit;
+            font-size: 13px;
+        }
+
+        .filter-chip:hover {
+            border-color: #3156a3;
+        }
+
+        .filter-chip.active {
+            border-color: #3156a3;
+            background: #3156a3;
+            color: white;
+        }
